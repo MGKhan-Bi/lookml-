@@ -1,0 +1,47 @@
+#LookML View
+
+view: patient_data {
+  sql_table_name: your_database.your_table ;; # Replace with your table name
+
+  # Total Patients Count
+  measure: patient_count {
+    type: count_distinct
+    sql: ${patient_id} ;; # Replace with the actual patient ID column
+    description: "Total number of unique patients"
+  }
+
+  # Average Age of Patients
+  measure: avg_age {
+    type: average
+    sql: ${age} ;; # Replace with the actual age column
+    description: "Average age of all patients"
+  }
+
+  # Admission Rate
+  measure: admission_rate {
+    type: count
+    sql: ${admission_id} ;; # Replace with the actual admission ID column
+    description: "Number of admitted patients"
+  }
+
+  # Discharge Rate
+  measure: discharge_rate {
+    type: count
+    sql: ${discharge_id} ;; # Replace with the actual discharge ID column
+    description: "Number of discharged patients"
+  }
+
+  # Gender Breakdown
+  dimension: gender {
+    type: string
+    sql: ${TABLE}.gender ;; # Replace with your gender column
+    description: "Gender of the patient"
+  }
+
+  measure: patient_count_by_gender {
+    type: count_distinct
+    sql: ${patient_id} ;; # Replace with the actual patient ID column
+    description: "Patient count grouped by gender"
+  }
+}
+
