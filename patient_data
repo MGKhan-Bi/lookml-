@@ -1,0 +1,11 @@
+#LookML Explore
+explore: patient_data {
+  description: "Explore patient data metrics"
+  label: "Patient Data"
+  
+  # Define join if required with other tables
+  join: other_table_name {
+    sql_on: ${patient_data.patient_id} = ${other_table_name.patient_id} ;; # If a join is necessary
+    relationship: one_to_one
+  }
+}
